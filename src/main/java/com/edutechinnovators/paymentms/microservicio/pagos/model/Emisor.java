@@ -6,7 +6,15 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Data;
+import jakarta.persistence.NoArgsConstructor;
+import jakarta.persistence.AllArgsConstructor;
+import jakarta.persistence.Entity;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Emisor {
 
     @Id
