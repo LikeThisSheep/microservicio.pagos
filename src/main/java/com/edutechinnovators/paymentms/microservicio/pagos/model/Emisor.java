@@ -6,10 +6,10 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Data;
-import jakarta.persistence.NoArgsConstructor;
-import jakarta.persistence.AllArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import jakarta.persistence.Entity;
+
 
 @Data
 @NoArgsConstructor
