@@ -8,5 +8,5 @@ public interface BoletaRepository extends JpaRepository<Boleta, Long> {
 
     Boleta findByFolio(Integer folio);
 
-    List<Boleta> findByAlumnoRut(String rut);
+    List<Boleta> findByAlumnoRut(Integer rut);
 }

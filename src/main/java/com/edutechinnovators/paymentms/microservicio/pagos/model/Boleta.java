@@ -1,6 +1,7 @@
 package com.edutechinnovators.paymentms.microservicio.pagos.model;
-import java.util.List;
+
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -10,45 +11,39 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Boleta {
+
     @Id
-    @Column(unique = true,length = 100)
+    @Column(unique = true, length = 100)
     private Integer folio;
-    @Column(unique = true,length = 100)
+
     private Date fecha_emision;
-    @Column(unique = true,length = 100)
+
+    @ManyToOne
+    @JoinColumn(name = "rut_alumno", referencedColumnName = "rut")
     private Alumno alumno;
-    @Column(unique = true,length = 100)
+
+    @ManyToOne
+    @JoinColumn(name = "rut_emisor", referencedColumnName = "rut_escuela")
     private Emisor emisor;
-    @Column(unique = true,length = 100)
-    private List<String> Items;
-    @Column(unique = true,length = 100)
-    private Totales totales;
-    @Column(unique = true,length = 100)
-    private MedioPago mediopago;
 
-    @ManyToOne
-    @JoinColumn(name = "rut_alumno", referencedColumnName="rut")
-    private Alumno alumno2;
-    @ManyToOne
-    @JoinColumn(name = "rut_emisor", referencedColumnName="rut_escuela")
-    private Emisor emisor2;
     @OneToMany(mappedBy = "boleta", cascade = CascadeType.ALL)
-    private List<Item> items2;
-    @OneToOne (mappedBy = "boleta", cascade = CascadeType.ALL)
-    private List <Totales> totales2;
-    @OneToOne (mappedBy = "boleta", cascade = CascadeType.ALL)
-    private List <MedioPago> mediopago2;
+    private List<Item> items;
 
+    @OneToOne(mappedBy = "boleta", cascade = CascadeType.ALL)
+    private Totales totales;
 
-
+    @OneToOne(mappedBy = "boleta", cascade = CascadeType.ALL)
+    private MedioPago mediopago;
 }
+
+
