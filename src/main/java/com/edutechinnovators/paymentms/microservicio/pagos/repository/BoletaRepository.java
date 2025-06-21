@@ -2,11 +2,13 @@ package com.edutechinnovators.paymentms.microservicio.pagos.repository;
 
 import com.edutechinnovators.paymentms.microservicio.pagos.model.Boleta;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public interface BoletaRepository extends JpaRepository<Boleta, Long> {
-
+@Repository
+public interface BoletaRepository extends JpaRepository<Boleta, Integer> {
     Boleta findByFolio(Integer folio);
 
-    List<Boleta> findByAlumnoRut(Integer rut);
+    boolean existsByFolio(Integer folio);
+
+    void deleteByFolio(Integer folio);
 }
