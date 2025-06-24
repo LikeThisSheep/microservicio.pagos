@@ -18,13 +18,17 @@ import java.util.List;
 public class Alumno {
     @Id
     @Column(unique = true,length = 9)
-    private Integer rut;
+    private String rut;
     @Column(unique = true,length = 100)
     private String nombre;
+    @Column(unique = true,length = 100)
+    private String apellido;
     @Column(unique = true,length = 100)
     private String curso;
 
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
     private List<Boleta> boletas;
 
-}
+
+    }
+

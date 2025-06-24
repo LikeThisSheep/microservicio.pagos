@@ -19,16 +19,13 @@ import jakarta.persistence.Entity;
 public class Emisor {
 
     @Id
-    @Column(unique = true,length = 9)
-    private Integer rut_escuela;
+    @Column(name = "rut_escuela", unique = true, length = 12)
+    private String rutEscuela;
     @Column(unique = true,length = 100)
     private String nombre_escuela;
     @Column(unique = true,length = 100)
     private String direccion_escuela;
-    @Column(unique = true,length = 100)
-    private String comuna_escuela;
 
     @OneToMany(mappedBy = "emisor", cascade = CascadeType.ALL)
     private List<Boleta> boletas;
-
 }
