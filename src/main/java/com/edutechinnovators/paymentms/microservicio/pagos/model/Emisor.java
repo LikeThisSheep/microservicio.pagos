@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Data
@@ -22,10 +23,11 @@ public class Emisor {
     @Column(name = "rut_escuela", unique = true, length = 12)
     private String rutEscuela;
     @Column(unique = true,length = 100)
-    private String nombre_escuela;
+    private String nombreEscuela;
     @Column(unique = true,length = 100)
-    private String direccion_escuela;
+    private String direccionEscuela;
 
     @OneToMany(mappedBy = "emisor", cascade = CascadeType.ALL)
+    @JsonManagedReference("emisor-boletas")
     private List<Boleta> boletas;
 }

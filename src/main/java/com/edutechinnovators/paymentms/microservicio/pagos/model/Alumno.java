@@ -8,6 +8,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Alumno {
     private String curso;
 
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    @JsonManagedReference("alumno-boletas")
     private List<Boleta> boletas;
 
 

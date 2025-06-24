@@ -62,12 +62,12 @@ public class DataLoader implements CommandLineRunner {
 
             Emisor emisor = new Emisor();
             emisor.setRutEscuela(faker.idNumber().valid()); 
-            emisor.setNombre_escuela(faker.university().name());
-            emisor.setDireccion_escuela(faker.address().fullAddress());
+            emisor.setNombreEscuela(faker.university().name());
+            emisor.setDireccionEscuela(faker.address().fullAddress());
             emisorRepository.save(emisor);
 
             Boleta boleta = new Boleta();
-            boleta.setFecha_emision(new Date());
+            boleta.setFechaEmision(new Date());
             boleta.setAlumno(alumno);
             boleta.setEmisor(emisor);
 
@@ -81,7 +81,7 @@ public class DataLoader implements CommandLineRunner {
                 
                 item.setDescripcion(faker.commerce().productName());
                 item.setCantidad(cantidad);
-                item.setPrecio_unitario(precioUnitario);
+                item.setPrecioUnitario(precioUnitario);
                 item.setTotal(cantidad * precioUnitario);
                 item.setBoleta(boleta);
                 items.add(item);
@@ -93,7 +93,7 @@ public class DataLoader implements CommandLineRunner {
             
             Totales totales = new Totales();
             int iva = (int) (precioNeto * 0.19);
-            totales.setPrecio_neto(precioNeto);
+            totales.setPrecioNeto(precioNeto);
             totales.setIva(iva);
             totales.setTotal(precioNeto + iva);
             totales.setBoleta(boleta);
@@ -101,7 +101,7 @@ public class DataLoader implements CommandLineRunner {
 
             MedioPago medioPago = new MedioPago();
             medioPago.setTipo(faker.options().option("Tarjeta de Crédito", "Transferencia", "Efectivo"));
-            medioPago.setMonto_pagado(totales.getTotal());
+            medioPago.setMontoPagado(totales.getTotal());
             medioPago.setBoleta(boleta);
             boleta.setMediopago(medioPago);
 

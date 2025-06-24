@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Data
@@ -28,11 +29,12 @@ public class Item {
     @Column(unique = true,length = 100)
     private Integer cantidad;
     @Column(unique = true,length = 100)
-    private Integer precio_unitario;
+    private Integer precioUnitario;
     @Column(unique = true,length = 100)
     private Integer total;
 
     @ManyToOne
     @JoinColumn(name = "folio_boleta", referencedColumnName="folio")
+    @JsonBackReference("boleta-items")
     private Boleta boleta;
 }

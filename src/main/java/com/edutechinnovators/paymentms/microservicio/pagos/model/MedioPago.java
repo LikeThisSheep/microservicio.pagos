@@ -12,12 +12,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "mediopago")
+@Table(name = "medio_pago")
 public class MedioPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +27,10 @@ public class MedioPago {
     @Column(unique = true,length = 100)
     private String tipo;
     @Column(unique = true,length = 100)
-    private Integer monto_pagado;
+    private Integer montoPagado;
 
     @OneToOne
     @JoinColumn(name = "folio_boleta", referencedColumnName = "folio")
+    @JsonBackReference("boleta-mediopago")
     private Boleta boleta;
 }
